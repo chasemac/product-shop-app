@@ -19495,8 +19495,24 @@ var NavBar = React.createClass({
 
   render: function () {
 
+    var navStyle = {
+      WebkitBoxShadow: "0 0 4px rgba(0,0,0,0.4)",
+      MozBoxShadow: "0 0 4px rgba(0,0,0,0.4)",
+      boxSHadow: "0 0 4px rgba(0,0,0,0.4)",
+      borderRadius: 0
+    };
+
+    var titleStyle = {};
+    var linkStyle = {};
+
+    if (this.props.bgColor) navStyle.background = this.props.bgColor;
+
+    if (this.props.titleColor) titleStyle.color = this.props.titleColor;
+
+    if (this.props.linkColor) linkStyle.color = this.props.linkColor;
+
     var createLinkItem = function (item, index) {
-      return React.createElement(NavItem, { key: item.title + index, href: item.href, title: item.title });
+      return React.createElement(NavItem, { aStyle: linkStyle, key: item.title + index, href: item.href, title: item.title });
     };
 
     return React.createElement(
@@ -19504,7 +19520,7 @@ var NavBar = React.createClass({
       null,
       React.createElement(
         'nav',
-        { className: 'navbar navbar-default' },
+        { style: navStyle, className: 'navbar navbar-default' },
         React.createElement(
           'div',
           { className: 'navbar-header' },
@@ -19517,7 +19533,7 @@ var NavBar = React.createClass({
           ),
           React.createElement(
             'a',
-            { className: 'navbar-brand', href: '#' },
+            { style: titleStyle, className: 'navbar-brand', href: '#' },
             'Product Shop'
           )
         ),
@@ -19549,7 +19565,7 @@ var NavItem = React.createClass({
       null,
       React.createElement(
         'a',
-        { href: this.props.href },
+        { style: this.props.aStyle, href: this.props.href },
         this.props.title
       )
     );
@@ -19574,6 +19590,6 @@ var navLinks = [{
   href: "#"
 }];
 
-ReactDOM.render(React.createElement(NavBar, { navData: navLinks }), document.getElementById('nav'));
+ReactDOM.render(React.createElement(NavBar, { bgColor: 'red', titleColor: 'white', linkColor: 'yellow', navData: navLinks }), document.getElementById('nav'));
 
 },{"./components/nav/NavBar.jsx":168,"react":166,"react-dom":1}]},{},[170]);
