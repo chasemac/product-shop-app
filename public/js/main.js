@@ -19488,53 +19488,45 @@ process.umask = function() { return 0; };
 
 },{}],168:[function(require,module,exports){
 var React = require('react');
-var ListItem = require('./ListItem.jsx');
 
-var ingredients = [{ "id": 1, "text": "ham" }, { "id": 2, "text": "cheese" }, { "id": 3, "text": "potatoes" }];
+var NavBar = React.createClass({
+  displayName: "NavBar",
 
-var List = React.createClass({
-    displayName: 'List',
-
-    render: function () {
-        var listItems = ingredients.map(function (item) {
-            return React.createElement(ListItem, { key: item.id, ingredient: item.text });
-        });
-
-        return React.createElement(
-            'ul',
-            null,
-            listItems
-        );
-    }
+  render: function () {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "nav",
+        { className: "navbar-default" },
+        React.createElement(
+          "div",
+          { className: "navbar-header" },
+          React.createElement(
+            "button",
+            { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#nav-collapse" },
+            React.createElement("span", { className: "icon-bar" }),
+            React.createElement("span", { className: "icon-bar" }),
+            React.createElement("span", { className: "icon-bar" })
+          ),
+          React.createElement(
+            "a",
+            { className: "navbar-brand", href: "#" },
+            "Product Shop"
+          )
+        )
+      )
+    );
+  }
 });
 
-module.exports = List;
+module.exports = NavBar;
 
-},{"./ListItem.jsx":169,"react":166}],169:[function(require,module,exports){
-var React = require('react');
-var ListItem = React.createClass({
-    displayName: 'ListItem',
-
-    render: function () {
-        return React.createElement(
-            'li',
-            null,
-            React.createElement(
-                'h4',
-                null,
-                this.props.ingredient
-            )
-        );
-    }
-});
-
-module.exports = ListItem;
-
-},{"react":166}],170:[function(require,module,exports){
+},{"react":166}],169:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
-var List = require('./components/List.jsx');
+var NavBar = require('./components/nav/NavBar.jsx');
 
-ReactDOM.render(React.createElement(List, null), document.getElementById('ingredients'));
+ReactDOM.render(React.createElement(NavBar, null), document.getElementById('nav'));
 
-},{"./components/List.jsx":168,"react":166,"react-dom":1}]},{},[170]);
+},{"./components/nav/NavBar.jsx":168,"react":166,"react-dom":1}]},{},[169]);
