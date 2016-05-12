@@ -24807,7 +24807,16 @@ module.exports = Routes;
 },{"./components/BasePage.jsx":230,"./components/HomePage.jsx":231,"./components/ProductPage.jsx":232,"react":227,"react-router":31}],230:[function(require,module,exports){
 var React = require('react');
 var NavBar = require('./nav/NavBar.jsx');
-var navLinks = [{ title: 'Home', href: "/" }];
+var navLinks = [{
+  title: 'Home',
+  href: "/"
+}, {
+  title: 'iOS Course',
+  href: "/product/55"
+}, {
+  title: 'React Course',
+  href: "/product/65"
+}];
 
 var BasePage = React.createClass({
   displayName: 'BasePage',
@@ -24880,6 +24889,9 @@ var ProductPage = React.createClass({
   },
   componentDidMount: function () {
     this.setState({ pid: this.props.params.productId });
+  },
+  componentWillReceiveProps: function (nextProps) {
+    this.setState({ pid: nextProps.params.productId });
   },
   render: function () {
     return React.createElement(
